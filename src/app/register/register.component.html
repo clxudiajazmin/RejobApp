@@ -1,0 +1,64 @@
+
+<body>
+    <!-- Toolbar -->
+    <div class="toolbar" role="banner">
+        <img 
+        [routerLink]="['../titlebar']"
+        width="50"
+        alt="ReJob Logo"
+        src="../../assets/img/logo_B.png"
+        />
+        <span style="font-size: 2vw;">REJOB</span>
+        <div class="spacer"></div>
+        <span style="font-size: 2vw; padding-right: 14%;">REGISTRO</span>
+        <div class="spacer"></div>
+    </div>
+
+    <div class="content" role="main">
+
+        <div style="padding-top: 2vw; text-align: center;">
+            <form #simpleform="ngForm" (ngSubmit)="registro(simpleform.value)" class="formLog">
+                <p class = "titulo">Datos Personales</p>
+                <hr>
+                <div class=filaCuest>
+                    <label class=tituloCamp>Nombre</label>
+                    <br/>
+                    <input class=contCamp ngModel name="nombre" type="text"/>
+                </div>
+                <div class=filaCuest>
+                    <label class=tituloCamp>Apellidos</label>
+                    <br/>
+                    <input class=contCamp ngModel name="apellidos" type="text"/>
+                </div>
+                <div class=filaCuest >
+                    <label class=tituloCamp>Fecha de Nacimiento</label>
+                    <br/>
+                    <mat-form-field appearance="fill" class="example-form-field" style="width: 22vw;">
+                    <mat-label>Elige una fecha</mat-label>
+                    <input matInput [matDatepicker]="datepicker" ngModel name="fecha_nacimiento">
+                    <mat-datepicker-toggle matSuffix [for]="datepicker" ></mat-datepicker-toggle>
+                    <mat-datepicker #datepicker>
+                        <mat-datepicker-actions>
+                        <button mat-button matDatepickerCancel class="pickerBtn">Cancel</button>
+                        <button mat-raised-button color="primary" matDatepickerApply class="pickerBtn">Apply</button>
+                        </mat-datepicker-actions>
+                    </mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <div class=filaCuest style="margin-top: -2%;">
+                    <label class=tituloCamp>Email</label>
+                    <br/>
+                    <input class=contCamp ngModel name="email" type="text"/>
+                </div>
+                <div class=filaCuest>
+                    <label class=tituloCamp>Contraseña</label>
+                    <br/>
+                    <input class=contCamp ngModel name="password"  type="password"/>
+                </div>
+                <button class=boton >Crear Cuenta</button>
+            </form>
+        </div>
+    </div>
+
+    <!--<a [routerLink]="['/primer']">Volver a la pagina principal</a>-->
+</body>
