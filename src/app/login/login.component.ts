@@ -1,3 +1,4 @@
+import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { DataService } from 'src/app/service/data.service';
@@ -10,7 +11,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 
 
 export interface DialogData {
-  //codigo:string;
+  codigo:string;
 }
 
 
@@ -21,7 +22,7 @@ export interface DialogData {
 })
 export class login implements OnInit {
   public contrIncorrecta = false;
-  codigo:string
+  codigo = 1111
   constructor(private dataService:DataService, public router:Router, public dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -59,19 +60,19 @@ export class login implements OnInit {
   }
 
   sendEmail() {
-
-    //var correo = 'patricia2291997@gmail.com'
-
-    document.body.style.cursor = "progress";
+    this.dataService.sendCode('clxudiajazmin@gmail.com').subscribe((res:any) => {
+      this.codigo = res
+      console.log(this.codigo);
+    });
     const dialogRef = this.dialog.open(sendEmail, {
       width: '250px',
-      data: {}
-      //data: {codigo: this.codigo}
+      data: {codigo: this.codigo}
     });
-    document.body.style.cursor = "auto";
+
     dialogRef.afterClosed().subscribe(result => {
-      if(result != 'Cancel'){
-        this.router.navigate(['/password',result]);
+      console.log('The dialog was closed');
+      if(this.codigo==result){
+        this.router.navigate(['/password']);
       }
       
     });
@@ -82,57 +83,29 @@ export class login implements OnInit {
   templateUrl: 'sendEmail.html',
 })
 export class sendEmail {
-  gotEmail = false;
-  email=null;
   contrIncorrecta = false;
   codigo:string;
   codIntroducido:string;
   
-  constructor(private dataService:DataService,
+  constructor(
     public dialogRef: MatDialogRef<sendEmail>,
     @Inject(MAT_DIALOG_DATA) public cod: DialogData
     ) {
       //this.codigo = JSON.stringify(cod);
       //this.codigo.toString();
       //this.codigo=String(this.codigo);
-      /*
       this.codigo=cod.codigo;
-      console.log('codigo a introducir:');
       console.log(cod);
       console.log(this.codigo);
-      */
  
-    }
-    sending(){
-      try{
-        document.body.style.cursor = "progress";
-        this.dataService.mostrarUsuarioEmail(this.email).subscribe((res:any) => {
-          var datosUs = res;
-          console.log('datosUs: ',datosUs);
-          if(datosUs == null){
-            this.email = null;
-          }
-          if(this.email){
-            this.dataService.sendCode(this.email).subscribe((res2:any) => {
-              this.codigo = res2;
-              console.log(this.codigo);
-              this.gotEmail = true
-              document.body.style.cursor = "auto";
-            });
-          }
-        });
-      }catch(e){
-        document.body.style.cursor = "auto";
-      }
     }
 
     onComprobarCod(){
       if(this.codigo != this.codIntroducido){
         this.contrIncorrecta = true;
       }else{
-        this.dialogRef.close(this.email);
+        this.dialogRef.close(this.codIntroducido);
       }
-
     }
 
     onNoClick(): void {

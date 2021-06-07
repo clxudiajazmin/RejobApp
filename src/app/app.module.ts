@@ -14,6 +14,7 @@ import { primer } from './components/primer.component';
 import { perfil } from './Perfil/perfil.component';
 import { MostrarInformacionComponent } from './mostrar-informacion/mostrar-informacion.component';
 import { MostrarTrabajoComponent } from './mostrar-trabajo/mostrar-trabajo.component';
+import { NotificacionesComponent } from './notificaciones/notificaciones.component';
 import { login } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { password } from './password/password.component';
@@ -30,8 +31,6 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatDialogModule} from '@angular/material/dialog';
-import {MatSliderModule} from '@angular/material/slider';
-import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 
@@ -92,6 +91,10 @@ const rutas: Routes = [
       {
         path: 'MostrarTrabajoComponent/:id',
         component: MostrarTrabajoComponent
+      },
+      {
+        path: 'NotificacionesComponent',
+        component: NotificacionesComponent
       }
     ]
   },
@@ -104,7 +107,7 @@ const rutas: Routes = [
     component: RegisterComponent
   },
   {
-    path: 'password/:correo',
+    path: 'password',
     component: password
   }
   
@@ -123,6 +126,7 @@ const rutas: Routes = [
     favoritos,
     MostrarTrabajoComponent,
     RegisterComponent,
+    NotificacionesComponent,
     sendEmail
   ],
   imports: [
@@ -146,9 +150,7 @@ const rutas: Routes = [
     MatIconModule,
     MatMenuModule,
     MatDialogModule,
-    NgbModule,
-    MatSliderModule,
-    MatPaginatorModule
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

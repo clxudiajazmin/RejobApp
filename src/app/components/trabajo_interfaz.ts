@@ -1,13 +1,14 @@
 export interface Trabajo{
-    area:string,
-    contrato:string,
-    enlace:string,
-    experiencia:string,
-    funciones:string,
-    jornada:string,
-    localidad:string,
-    ofrece:string,
-    requisitos:string,
-    salario:string,
-    titulo:string
+    ID:number,
+    Titulo:string,
+    Enlace:string,
+    Jornada:string,
+    Contrato:string,
+    Salario:string,
+    Experiencia:string,
+    Funciones:string,
+    Requisitos:string,
+    Ofrece:string,
+    Area:string,
+    Localidad:string
 }
