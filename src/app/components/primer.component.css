@@ -20,15 +20,49 @@ p {
     margin: 0;
 }
 
+.txtFiltro{
+  font-weight: 600;
+}
+.btn{
+  margin: 1vw;
+  padding: 1vw;
+  background-color: #3B6E90;
+  color: white;
+  border-radius:0.5vw;
+  border-color: white;
+}
 .menuLateral{
+    z-index: 1;
     position:fixed;
     left: 0;
-    width:200px;
+    width:225px;
     max-width: 200px;
-    min-width: 200px;
-    height:90%;
-    background-color:rgb(5, 155, 147);
-  
+    min-width: 225px;
+    height:95%;
+    overflow-y: scroll;
+    padding:1vw;
+    padding-left: 1.5%;
+    padding-bottom: 6vw;
+    background-color:rgba(95, 177, 232, 0.91);
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;
+}
+
+@media only screen and (max-width:960px){
+  menuLateral{
+      overflow-y:scroll;
+  }
+}
+
+.menuLateral::-webkit-scrollbar {
+  display: none;
+}
+.example-margin-bar{
+  max-width: 75px;
+  min-width: 75px;
+}
+.example-margin{
+  z-index: 2;
 }
 
 .toolbar {
@@ -58,7 +92,7 @@ p {
   }
 
 .content {
-    max-height: 90%;
+    min-height:calc(100% - 40px);
     width: 100%;
     display: flex;
     /*margin: 82px auto 32px;
@@ -69,11 +103,10 @@ p {
     flex-wrap: wrap;
     padding-top: 60px;
     justify-content: center;
-    
 }
-.content>* {
-    flex: 1 1 0%;
-}
+
+
+
 
 .card-container {
     display: flex;
@@ -83,7 +116,7 @@ p {
 }
 
 .card {
-    border-radius: 4px;
+    border-radius: 7px;
     border: 1px solid #eee;
     background-color: #fafafa;
     height: 40px;
@@ -136,10 +169,11 @@ p {
   }
 
 .tarjetas{
+  position: relative;
   width:65vw; 
-  height: 6vw; 
-  background-color: aqua;
-  margin: 2vw;
+  min-height: 6vw; 
+  background-color:rgba(95, 177, 231, 0.91);
+  margin: 45px;
   padding: 0.5vw;
   border-style: inset;
   border-radius:0.5vw;
@@ -149,7 +183,10 @@ p {
   vertical-align: middle;
   color: black;
 }
-
+.tarjetas:hover {
+  background-color:rgba(85, 158, 207, 0.81);
+  cursor: pointer;
+}
 
 
   
